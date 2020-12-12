@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>overlap</title>
+    </head>
+    <body>
+        <script language="javascript" type="text/javascript">
+        /*
+        h1 = height of rectangle 1
+        w1 = width of rectangle 1
+        l1 = top left cornor of rectangle 1
+        r1 = bottom right cornor of rectangle 1
+        h2 = height of rectangle 2
+        w2 = width of rectangle 2
+        l2 = top left cornor of rectangle 2
+        r2 = bottom right cornor of rectangle 2
+        */
+        let h1=-10,w1=10,l1=[0,10],h2=-5,w2=10,l2=[5,5];
+        let r1=new Array();
+        r1[0]=l1[0]+w1;
+        r1[1]=l1[1]+h1;
+        let r2=new Array();
+        r2[0]=l2[0]+w2;
+        r2[1]=l2[1]+h2;
+        function do_overlap(l1,l2,r1,r2){
+            // If one rectangle is on left side of other
+            if (l1[0] >= r2[0] || l2[0] >= r1[0]){
+                return false; 
+            }
+  
+            // If one rectangle is above other 
+            else if (l1[1] <= r2[1] || l2[1] <= r1[1]){
+                return false; 
+            }
+            else{
+                return true;
+            }
+        }
+        if(do_overlap(l1,l2,r1,r2)){
+            document.write("*****Rectangles Overlap*****");
+        }
+        else{
+            document.write("*****Rectangles Don't Overlap*****");
+        }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <title>carry</title>
+    </head>
+    <body>
+        <?php
+            function carry($a,$b){
+                $carry=0;
+               $count=0;
+               $a_len=strlen((string)$a);
+               $b_len=strlen((string)$b);
+               while ($a_len != 0 || $b_len != 0){
+                 $a_last=0;
+                 $b_last=0;
+                    if($a_len>0){
+                        $a_last=$a[$a_len-1]-0;
+                        $a_len--;
+                    }
+                    if($b_len>0){
+                        $b_last=$b[$b_len-1]-0;
+                        $b_len--;
+                    }
+                    $sum=$a_last+$b_last+$carry;
+                    if($sum>=10){
+                        $carry=1;
+                        $count++;
+                    }
+                    else{
+                        $carry=0;
+                    }
+                }
+                return $count;
+            }
+        ?>
+        <h1>Total number of Carry in Addition</h1>
+        <form>
+            Enter First Number: <input type="number" name="first"><br><br>
+            Enter Second Number: <input type="number" name="second"><br><br>
+            <input type="submit" value="submit"><br>
+        </form>
+        <?php
+            $a=$_GET["first"];
+            $b=$_GET["second"];
+            $count=carry($a,$b);
+        ?>
+        first value: <?php echo $a;?><br>
+        second value: <?php echo $b;?><br>
+        Addition: <?php echo $a+$b;?><br>
+        <?php echo "$count";?> carry forward operations<br>
+        <a href="index.php">Reset</a>
+    </body>
+</html>
